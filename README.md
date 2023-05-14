@@ -65,20 +65,26 @@ Berikut beberapa data preparation yang dilakukan :
 ## Modeling
 
 - Proses modeling yang dilakukan pada proyek ini adalah dengan membuat algoritma machine learning, yaitu content based filtering. Algoritma content based filtering dibuat dengan apa yang disukai pengguna pada masa lalu.
+- Berikut konten buku yang disukai pengguna di masa lalu
+
+![FireShot Capture 002 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/f97c9637-8629-4383-ab14-792957577387)
+
+Berdasarkan hasil di atas, terlihat bahwasanya pengguna menyukai buku berjudul "The Emigrants" yang bergenre 'Fiction', 'German Literature', 'Historical Fiction', 'Germany', 'Novels', 'Literature', '20th Century' sehingga akan memunculkan top 5 rekomendasi buku sebagai berikut:
+
+![FireShot Capture 003 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/71cfa649-e6e0-489e-91ad-cefa658ed23b)
 
 ## Evaluation
 
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
+Pada bagian ini, saya merekomendasikan sebuah buku berjudul The Emigrants.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+![FireShot Capture 002 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/f97c9637-8629-4383-ab14-792957577387)
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
+hasil dari Top-N 5 dari buku yang saya rekomendasikan adalah sebagai berikut :
 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+![FireShot Capture 003 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/71cfa649-e6e0-489e-91ad-cefa658ed23b)
 
-**---Ini adalah bagian akhir laporan---**
+Dari hasil rekomendasi di atas, diketahui bahwa The Emigrants termasuk ke dalam genre 'Fiction', 'German Literature', 'Historical Fiction', 'Germany', 'Novels', 'Literature', '20th Century'. Dari 5 item yang direkomendasikan, 4 item memiliki genre yang sama (similar). Artinya, precision sistem kita sebesar 4/5 atau 80%.
 
-_Catatan:_
+Teknik Evaluasi di atas adalah dengan menggunakan precission, rumus dari teknik ini adalah :
 
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+![dos_819311f78d87da1e0fd8660171fa58e620211012160253 (1)](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/93e927b9-2831-412a-960c-7412011e7e06)
