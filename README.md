@@ -38,6 +38,13 @@ Algoritma Content Based Filtering digunakan untuk merekemondesikan buku berdasar
 
 Dataset yang digunakan dalam proyek ini adalah Best Books (10k) Multi-Genre Data. Berikut merupakan link untuk mendownload dataset: [Best Books (10k) Multi-Genre Data](https://www.kaggle.com/datasets/ishikajohari/best-books-10k-multi-genre-data).
 
+Berikut informasi pada dataset:
+
+1. Dataset memiliki format csv(Comma Separated Value).
+2. Dataset memiliki 10000 sampel dengan 8 fitur.
+3. Dataset memiliki 6 fitur bertipe objek dan 1 fitur bertipe float64 dan 1 fitur bertipe int.
+4. Terdapat missing value pada fitur Description sebanyak 77 buah.
+
 Variabel-variabel pada dataset Best Books (10k) Multi-Genre Data adalah sebagai berikut:
 
 - Book: merupakan judul buku
@@ -52,20 +59,67 @@ Tahapan yang dilakukan adalah exploratory data analysis, yaitu dengan melihat-li
 
 ## Data Preparation
 
+---
+
 Berikut beberapa data preparation yang dilakukan :
 
-- Mengatasi missing value : menyeleksi data apakah data tersebut ada yang kosong atau tidak, jika ada data kosong maka saya akan.menghapusnya
-- Membagi data menjadi data training dan validasi : untuk membagi data untuk dilatih dan validasi.
-- Konversi data menjadi iist : untuk mengubah data menjadi list
-- Membuat dictionary : Untuk membuat dictionary dari data yang ada.
-- Menggunakan TfidfVectorizer : untuk melakukan pembobotan.
-- Melakukan preprocessing : untuk menghilangkan permasalahan-permasalahan yang dapat mengganggu hasil daripada proses data
-- mapping data : untuk memetakan data
+### **Mengatasi Missing Value**
+
+Pada fitur description terdapat sebanyak 77 missing value. Supaya tidak menimbulkan kesalahan, maka kita akan menghapus seluruh data kosong tersebut.
+
+### **Membersihkan Data Genres**
+
+Karena pada fitur Genres terdapat noise pada konten (terbungkus pada kurung kotak seperti pada tabel), maka kita harus membersihkan kurung kotak tersebut
+
+| Book                                     | Author       | Description                                       | Genres                                              |
+| ---------------------------------------- | ------------ | ------------------------------------------------- | --------------------------------------------------- |
+| To Kill a Mockingbird                    | Harper Lee   | The unforgettable novel of a childhood in a sl... | ['Classics', 'Fiction', 'Historical Fiction', ... ] |
+| Harry Potter and the Philosopher’s Stone | J.K. Rowling | Harry Potter thinks he is an ordinary boy - un... | ['Fantasy', 'Fiction', 'Young Adult', 'Magic',... ] |
+| Pride and Prejudice                      | Jane Austen  | Since its immediate success in 1813, Pride and... | ['Classics', 'Fiction', 'Romance', 'Historical...]  |
+
+Genres yang telah dibersihkan akan terlihat seperti berikut.
+
+| Book                                     | Author       | Description                                       | Genres                                            |
+| ---------------------------------------- | ------------ | ------------------------------------------------- | ------------------------------------------------- |
+| To Kill a Mockingbird                    | Harper Lee   | The unforgettable novel of a childhood in a sl... | Classics, Fiction, Historical Fiction, School,... |
+| Harry Potter and the Philosopher’s Stone | J.K. Rowling | Harry Potter thinks he is an ordinary boy - un... | Fantasy, Fiction, Young Adult, Magic, Children... |
+| Pride and Prejudice                      | Jane Austen  | Since its immediate success in 1813, Pride and... | Classics, Fiction, Romance, Historical Fiction... |
+
+### **Mengecek Jumlah Buku**
+
+Setelah kita membersihkan data dari missing value dengan cara menghapus data yang kosong, maka jumlah buku akan berkurang dari jumlah awalnya. Jumlah awal buku pada data adalah 10000 buah, akan tetapi, setelah dilakukan pembersihan menjadi 9795 buah.
+
+### **Mengubah Data book, author, dan genres menjadi list**
+
+kita perlu melakukan konversi data series menjadi list. Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy. Kemudian list data tersebut akan kita membuat dictionary untuk menentukan pasangan key-value pada data book, author, dan genres yang telah kita siapkan sebelumnya.
 
 ## Modeling
 
-- Proses modeling yang dilakukan pada proyek ini adalah dengan membuat algoritma machine learning, yaitu content based filtering. Algoritma content based filtering dibuat dengan apa yang disukai pengguna pada masa lalu.
-- Berikut konten buku yang disukai pengguna di masa lalu
+---
+
+Proses modeling yang dilakukan pada proyek ini adalah dengan membuat algoritma machine learning, yaitu content based filtering. Algoritma content based filtering dibuat dengan apa yang disukai pengguna pada masa lalu.
+
+### **Content-Based Filtering**
+
+Content based filtering menggunakan informasi tentang beberapa item/data untuk merekomendasikan kepada pengguna sebagai referensi mengenai informasi yang digunakan sebelumnya. Tujuan dari content based filtering adalah untuk memprediksi persamaan sejumlah informasi yang didapat dari pengguna. Sebagai contoh, seorang pembaca sedang membaca buku tentang saham. Platform baca buku online secara sistem akan merekomendasikan si pengguna untuk membaca buku lain yang berhubungan dengan saham.
+
+Dalam pembuatannya, content based filtering menggunakan konsep perhitungan vectoru, TF-IDF, dan Cosine Similarity yang intinya dikonversikan dari data/teks menjadi berbentuk vector.
+
+![](https://miro.medium.com/max/1400/1*BcXAhvp6xChQ85B7yYbkXA.png)
+
+**Kelebihan**
+
+- Tidak memerlukan data apapun terhadap pengguna
+- Dapat merekomendasikan item khusus
+
+**Kelemahan**
+
+- Membutuhkan banyak pengetahuan suatu domain
+- Membuat rekomendasi berdasarkan minat pengguna yang ada saja
+
+**Hasil Modeling**
+
+Berikut konten buku yang disukai pengguna di masa lalu
 
 ![FireShot Capture 002 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/f97c9637-8629-4383-ab14-792957577387)
 
@@ -74,6 +128,20 @@ Berdasarkan hasil di atas, terlihat bahwasanya pengguna menyukai buku berjudul "
 ![FireShot Capture 003 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/71cfa649-e6e0-489e-91ad-cefa658ed23b)
 
 ## Evaluation
+
+---
+
+Evaluasi dari sistem rekomendasi pada proyek ini dengan pendekatan content based filtering dengan menggunakan metrik evaluasi precission.
+
+Precision adalah perbandingan antara True Positive (TP) dengan banyaknya data yang diprediksi positif. Atau juga bisa ditulis secara matematis sebagai berikut :
+
+precision = TP / (TP + FP)
+
+dimana : TP = True Positive atau positif yang sebenarnya FP = False Positive atau positif yang salah dari hasil prediksi
+
+Namun pada sistem rekomendasi kita tidak akan menggunakan True positive atau False Positive melainkan rating yang diberikan pada buku untuk menentukan buku yang direkomendasikan relevan atau tidak. Dengan rumus sebagai berikut :
+
+precision@K = (# of recommended item that relevan) / (# of recommended item)
 
 Pada bagian ini, saya merekomendasikan sebuah buku berjudul The Emigrants.
 
@@ -84,7 +152,3 @@ hasil dari Top-N 5 dari buku yang saya rekomendasikan adalah sebagai berikut :
 ![FireShot Capture 003 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/71cfa649-e6e0-489e-91ad-cefa658ed23b)
 
 Dari hasil rekomendasi di atas, diketahui bahwa The Emigrants termasuk ke dalam genre 'Fiction', 'German Literature', 'Historical Fiction', 'Germany', 'Novels', 'Literature', '20th Century'. Dari 5 item yang direkomendasikan, 4 item memiliki genre yang sama (similar). Artinya, precision sistem kita sebesar 4/5 atau 80%.
-
-Teknik Evaluasi di atas adalah dengan menggunakan precission, rumus dari teknik ini adalah :
-
-![dos_819311f78d87da1e0fd8660171fa58e620211012160253 (1)](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/93e927b9-2831-412a-960c-7412011e7e06)

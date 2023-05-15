@@ -136,10 +136,11 @@ books = books.dropna()
 
 books.isnull().sum()
 
-"""### **Menyamakan jenis Genres**
+"""#### **Membersihkan Data Genres**"""
 
-
-"""
+fix_books['Genres'] = fix_books['Genres'].map(lambda x: x.lstrip('[').rstrip(']'))
+fix_books['Genres'] = fix_books['Genres'].str.replace("'", "")
+fix_books.head()
 
 fix_books = books
 fix_books
@@ -150,13 +151,7 @@ fix_books
 
 len(fix_books.Book.unique())
 
-"""#### **Mengecek Genres**"""
-
-fix_books['Genres'] = fix_books['Genres'].map(lambda x: x.lstrip('[').rstrip(']'))
-fix_books['Genres'] = fix_books['Genres'].str.replace("'", "")
-fix_books.head()
-
-fix_books.Genres.unique()
+"""### **Mengubah Data book, author, dan genres menjadi list**"""
 
 book = fix_books['Book'].tolist()
 author = fix_books['Author'].tolist()
