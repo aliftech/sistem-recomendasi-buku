@@ -107,26 +107,6 @@ Dalam pembuatannya, content based filtering menggunakan konsep perhitungan vecto
 
 ![](https://miro.medium.com/max/1400/1*BcXAhvp6xChQ85B7yYbkXA.png)
 
-**Kelebihan**
-
-- Tidak memerlukan data apapun terhadap pengguna
-- Dapat merekomendasikan item khusus
-
-**Kelemahan**
-
-- Membutuhkan banyak pengetahuan suatu domain
-- Membuat rekomendasi berdasarkan minat pengguna yang ada saja
-
-**Hasil Modeling**
-
-Berikut konten buku yang disukai pengguna di masa lalu
-
-![FireShot Capture 002 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/f97c9637-8629-4383-ab14-792957577387)
-
-Berdasarkan hasil di atas, terlihat bahwasanya pengguna menyukai buku berjudul "The Emigrants" yang bergenre 'Fiction', 'German Literature', 'Historical Fiction', 'Germany', 'Novels', 'Literature', '20th Century' sehingga akan memunculkan top 5 rekomendasi buku sebagai berikut:
-
-![FireShot Capture 003 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/71cfa649-e6e0-489e-91ad-cefa658ed23b)
-
 ## Evaluation
 
 ---
