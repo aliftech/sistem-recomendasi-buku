@@ -135,20 +135,22 @@ Evaluasi dari sistem rekomendasi pada proyek ini dengan pendekatan content based
 
 Precision adalah perbandingan antara True Positive (TP) dengan banyaknya data yang diprediksi positif. Atau juga bisa ditulis secara matematis sebagai berikut :
 
-precision = TP / (TP + FP)
-
-dimana : TP = True Positive atau positif yang sebenarnya FP = False Positive atau positif yang salah dari hasil prediksi
-
-Namun pada sistem rekomendasi kita tidak akan menggunakan True positive atau False Positive melainkan rating yang diberikan pada buku untuk menentukan buku yang direkomendasikan relevan atau tidak. Dengan rumus sebagai berikut :
-
-precision@K = (# of recommended item that relevan) / (# of recommended item)
+![rumus precision](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:819311f78d87da1e0fd8660171fa58e620211012160253.png)
 
 Pada bagian ini, saya merekomendasikan sebuah buku berjudul The Emigrants.
 
-![FireShot Capture 002 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/f97c9637-8629-4383-ab14-792957577387)
+| title         | author      | genre                                          |
+| ------------- | ----------- | ---------------------------------------------- |
+| The Emigrants | W.G. Sebald | Fiction, German Literature, Historical Fiction |
 
 hasil dari Top-N 5 dari buku yang saya rekomendasikan adalah sebagai berikut :
 
-![FireShot Capture 003 - Proyek Akhir _ Membuat Model Sistem Rekomendasi ipynb - Colaboratory_ - colab research google com](https://github.com/aliftech/sistem-recomendasi-buku/assets/47414125/71cfa649-e6e0-489e-91ad-cefa658ed23b)
+| title                   | genre                                          |
+| ----------------------- | ---------------------------------------------- |
+| Atemschaukel            | Fiction, Historical Fiction, German Literature |
+| Crabwalk                | Fiction, German Literature, Historical Fiction |
+| Chess Story             | Fiction, Classics, German Literature           |
+| Heaven Has No Favorites | Classics, Fiction, German Literature           |
+| The Clown               | Fiction, German Literature, Classics           |
 
-Dari hasil rekomendasi di atas, diketahui bahwa The Emigrants termasuk ke dalam genre 'Fiction', 'German Literature', 'Historical Fiction', 'Germany', 'Novels', 'Literature', '20th Century'. Dari 5 item yang direkomendasikan, 4 item memiliki genre yang sama (similar). Artinya, precision sistem kita sebesar 4/5 atau 80%.
+Dari hasil rekomendasi di atas, diketahui bahwa The Emigrants termasuk ke dalam genre Fiction, German Literature, Historical Fiction. Dari 5 item yang direkomendasikan, 2 item memiliki genre yang sama (similar). Artinya, precision sistem kita sebesar 2/5 atau 40%.

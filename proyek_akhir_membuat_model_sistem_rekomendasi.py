@@ -138,12 +138,13 @@ books.isnull().sum()
 
 """#### **Membersihkan Data Genres**"""
 
-fix_books['Genres'] = fix_books['Genres'].map(lambda x: x.lstrip('[').rstrip(']'))
-fix_books['Genres'] = fix_books['Genres'].str.replace("'", "")
-fix_books.head()
-
 fix_books = books
 fix_books
+
+fix_books['Genres'] = fix_books['Genres'].map(lambda x: x.lstrip('[').rstrip(']'))
+fix_books['Genres'] = fix_books['Genres'].str.replace("'", "")
+fix_books['Genres'] = fix_books['Genres'].str.split(',').str[:3].str.join(', ')
+fix_books.head()
 
 """#### **Mengecek jumlah fix_books**
 
